@@ -1,0 +1,81 @@
+<html>
+  <head>
+    <title>Travel Dashboard</title>
+  </head>
+
+  <body>
+    <a href="/travels/logout">Logout</a>
+
+    <h1>Hello, {{user.name}}!</h1>
+
+
+
+    <div id="table1">
+    <h2>Your Trip Schedule</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <td>Destination</td>
+            <td>Tavel Start Date</td>
+            <td>Travel End Date</td>
+            <td>Plan</td>
+            <td>Edit</td>
+            <td>Delete</td>
+          </tr>
+        </thead>
+
+        <tbody>
+        {% for travel in travels %}
+          <tr>
+            <td><a href="/travels/destination/{{travel.trips.id}}">{{travel.trips.destination}}</a></td>
+            <td>{{travel.trips.startdate|date:"M d Y"}}</td>
+            <td>{{ travel.trips.enddate|date:"M d Y" }}</td>
+            <td>{{travel.trips.description}}</td>
+            <td><a href="/travels/edit/{{travel.trips.id}}">Edit</a></td>
+            <td><a href="/travels/delete/{{travel.trips.id}}">Delete</a></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+
+      </table>
+    </div>
+
+
+
+    <div id="table2">
+    <h2>Other User's Travel Plans</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <td>Name</td>
+            <td>Destination</td>
+            <td>Tavel Start Date</td>
+            <td>Travel End Date</td>
+            <td>Do You Want to Join?</td>
+          </tr>
+        </thead>
+
+        <tbody>
+        {% for travel in otherusers %}
+          <tr>
+            <td>{{travel.travelers.name}}</td>
+            <td><a href="/travels/destination/{{travel.trips.id}}">{{travel.trips.destination}}</a></td>
+            <td>{{travel.trips.startdate|date:"M d Y"}}</td>
+            <td>{{travel.trips.enddate|date:"M d Y"}}</td>
+            <td>{{travel.trips.description}}</td>
+            <td><a href="/travels/join/{{travel.trips.id}}">Join</a></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+
+      </table>
+    </div>
+
+
+  <a href="/travels/add">Add Travel Plan</a>
+
+  </body>
+
+</html>

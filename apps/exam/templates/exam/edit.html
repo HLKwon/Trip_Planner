@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <title>Edit Travel Plan</title>
+  </head>
+
+  <body>
+
+    <form class="" action="/travels/edited/{{trip.id}}" method="POST">
+				{% csrf_token %}
+        <label for='destination'>Destination:</label>
+				<input type='text' name='destination' value='{{trip.destination}}'><br>
+
+        <label for='description'>Description:</label>
+				<input type='text' name='description' value='{{trip.description}}'><br>
+
+        <label for='startdate'>Travel Date From:</label>
+				<input type='date' name='startdate' value='{{trip.startdate|date:"Y-m-d"}}'><br>
+
+        <label for='enddate'>Travel Date To:</label>
+				<input type='date' name='enddate' value='{{trip.enddate|date:"Y-m-d"}}'><br>
+
+				<input type="submit" value="Add">
+			</form>
+
+
+
+
+
+  </body>
+</html>
